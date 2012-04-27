@@ -1,0 +1,28 @@
+[user]
+	name = cnosuke
+	email = cnosuke@gmail.com
+
+[core]
+	excludesfile = /Users/shinnosuke/.gitignore
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[alias]
+    ad = add .
+    br = branch
+    ba = branch -a
+    bn = branch --no-merged
+    ci = commit -am
+    co = checkout
+    di = diff
+    lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn \n %Creset%s'
+    up = pull --rebase
+    sh = show
+    st = status
+    wc = whatchanged --graph

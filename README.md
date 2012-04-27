@@ -1,4 +1,4 @@
-conf
+cnosuke's configuration files
 ====
 
-configuration files
+これはcnosukeが使っている設定ファイルを置いとくリポジトリだよ。
