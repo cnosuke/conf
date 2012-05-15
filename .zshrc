@@ -323,3 +323,7 @@ function rprompt-git-current-branch {
    fi
    echo "${color}(${name}${action})%f%b"
 }
+
+alias tmux="tmux"
+alias t="tmux"
+alias ta="tmux a -d"
