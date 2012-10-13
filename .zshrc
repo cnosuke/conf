@@ -13,11 +13,9 @@ setopt AUTO_PUSHD		# cd 時にOldDir を自動的にスタックに積む
 setopt correct			# コマンドのスペルチェック
 setopt auto_name_dirs		# よく判らん
 setopt auto_remove_slash	# 補完が/で終って、つぎが、語分割子か/かコマンド
-				# の後(; とか & )だったら、補完末尾の/を取る
 setopt extended_history 	# ヒストリに時刻情報もつける
 setopt extended_glob		# グロブで、特殊文字"#,~,^"を使う、
 setopt FUNCTION_ARGZERO 	#  $0 にスクリプト名/シェル関数名を格納
-
 setopt hist_ignore_dups		# 前のコマンドと同じならヒストリに入れない
 setopt hist_ignore_space	# 空白ではじまるコマンドをヒストリに保持しない
 setopt HIST_IGNORE_ALL_DUPS	# 重複するヒストリを持たない
@@ -29,9 +27,6 @@ setopt NUMERIC_GLOB_SORT	# グロブの数のマッチを辞書式順じゃな�
 setopt prompt_subst		# プロンプト文字列で各種展開を行なう
 setopt no_promptcr              # 改行コードで終らない出力もちゃんと出力する
 setopt pushd_ignore_dups	# ディレクトリスタックに、同じディレクトリを入れない
-#setopt rm_star_silent		# rm * とかするときにクエリしない
-#setopt no_beep			# ZLE のエラーでビープしない
-#setopt cdable_vars		# cd の引数のdir がないとき ~をつけてみる
 setopt SHARE_HISTORY		# 複数プロセスで履歴を共有
 setopt SHORT_LOOPS		# loop の短縮形を許す
 setopt sh_word_split		# よく判らん
@@ -48,8 +43,6 @@ setopt null_glob
 # 小文字に対して大文字も補完する
 # http://www.ex-machina.jp/zsh/index.cgi?FAQ%40zsh%A5%B9%A5%EC#l1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-
 
 autoload -U colors  ; colors
 #### スーパーユーザのプロンプトは赤にする
@@ -68,24 +61,11 @@ RPROMPT=$'%{\e[${PSCOLOR}m%}%F{white}[`rprompt-git-current-branch`%~]%f%{\e[00m%
 # %m	マシン名
 PROMPT=$'%{\e[${PSCOLOR}m%}${USERNAME}@${HOST} %#%{\e[m%} ' #左プロンプト
 
-
-alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir'
-
-
-#### 個人用設定ファイルがあればそれを読み込む
-#if [ -e ~/.zshrc_private ]; then
-#    source ~/.zshrc_private
-#fi
-#でも今使ってない
-
-# 前方予測する
-# autoload predict-on
-# predict-on
-
 # lsを弄る
 # http://nao.no-ip.info/index.cgi?.zsh_common
 export LS_OPTIONS='-vG'
 #--show-control-chars -h --color=auto'
+
 # デフォルトから、拡張子ごとの設定を除いた物
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43'
 export LS_COLORS=$LS_COLORS':tw=30;42:ow=34;42:st=37;44:ex=01;32'
@@ -112,7 +92,6 @@ alias ngrep="grep -3 -n -i --color=auto -v"
 
 # 再帰的に、強調付きでgrep
 alias findgrep='find . -type f -not -path \*/.svn/\* -not -path \*~ | xargs grep -I -H -n --color=always --context=1'
-
 
 # hisotry
 # setopt share_history # 前のほうですでに設定してある。
@@ -193,50 +172,6 @@ function diffApply(){
 alias WATCH="watch -d --interval=1"
 alias WATCHsudo="sudo watch -d --interval=1"
 
-# screenを、自動でアタッチするようにする
-# -U は、念のためUTF-8設定にさせるためのもの
-alias scr="screen -U -D -RR"
-alias screen="screen -U -D -RR"
-
-#screenでタブにコマンド名を出す
-if [ "$TERM" = "screen" ]; then
-    chpwd () { echo -n "_`dirs`\\" }
-    preexec() {
-        # see [zsh-workers:13180]
-        # http://www.zsh.org/mla/workers/2000/msg03993.html
-        emulate -L zsh
-        local -a cmd; cmd=(${(z)2})
-        case $cmd[1] in
-            fg)
-    if (( $#cmd == 1 )); then
-        cmd=(builtin jobs -l %+)
-        else
-        cmd=(builtin jobs -l $cmd[2])
-        fi
-    ;;
-            %*) 
-    cmd=(builtin jobs -l $cmd[1])
-    ;;
-            cd)
-    if (( $#cmd == 2)); then
-        cmd[1]=$cmd[2]
-        fi
-    ;&
-    *)
-    echo -n "k$cmd[1]:t\\"
-    return
-    ;;
-    esac
-
-    local -A jt; jt=(${(kv)jobtexts})
-
-    $cmd >>(read num rest
-        cmd=(${(z)${(e):-\$jt$num}})
-        echo -n "k$cmd[1]:t\\") 2>/dev/null
-    }
-        chpwd
-fi
-
 # 引数を数式として計算
 # ex: calc '1. + sin(1)'
 function calc () {
@@ -244,8 +179,6 @@ function calc () {
 }
 # sin といった数学関数も使える
 zmodload -i zsh/mathfunc
-
-
 
 # Begin: .ssh/known_hosts による補完。
 # known_hostsがハッシュ化されていると腐るので注意
@@ -324,6 +257,5 @@ function rprompt-git-current-branch {
    echo "${color}(${name}${action})%f%b"
 }
 
-alias tmux="tmux"
 alias t="tmux"
 alias ta="tmux a -d"
