@@ -4,16 +4,20 @@
 
 [core]
 	excludesfile = /Users/shinnosuke/.gitignore
+    editor = vim
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
+[push]
+    default = tracking
+
 [alias]
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/'
     ad = add .
     br = branch
     ba = branch -a
@@ -26,3 +30,4 @@
     sh = show
     st = status
     wc = whatchanged --graph
+    lv  = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn %Cred%h\n  %Creset%s' --name-status
