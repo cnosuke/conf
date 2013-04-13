@@ -1,0 +1,4 @@
+alias mine='ruby /Users/shinnosuke/TANK/repos/rapidmine/rapidmine.rb'
+alias replace_string='ruby /Users/shinnosuke/GoogleDrive/Tools/replace_string.rb'
+
+alias uglifyjs='/Users/shinnosuke/.npm/uglify-js/2.2.2/package/bin/uglifyjs'

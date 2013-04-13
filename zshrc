@@ -33,39 +33,10 @@ setopt sh_word_split		# よく判らん
 setopt RC_EXPAND_PARAM		# {}をbash ライクに展開
 setopt TRANSIENT_RPROMPT 	# 右プロンプトに入力がきたら消す
 
-# Ctrl-D でログアウトするのを抑制する。
-setopt  ignore_eof
-
-# グロブがマッチしないときエラーにしない
-# http://d.hatena.ne.jp/amt/20060806/ZshNoGlob
-setopt null_glob
-
-# 小文字に対して大文字も補完する
-# http://www.ex-machina.jp/zsh/index.cgi?FAQ%40zsh%A5%B9%A5%EC#l1
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-autoload -U colors  ; colors
-#### スーパーユーザのプロンプトは赤にする
-if [ $UID = 0 ] ; then 
-    PSCOLOR='01;04;31'      # 太字;下線;赤
-    USERNAME=root
-else
-    #PSCOLOR='00;04;34'      # 細字;下線;青
-    PSCOLOR='00;34'      # 細字;青
-    USERNAME=%(!..%n)
-fi
-# 右プロンプトに.gitがあれば現在のブランチを表示するようにした
-RPROMPT=$'%{\e[${PSCOLOR}m%}%F{white}[`rprompt-git-current-branch`%~]%f%{\e[00m%}' # 右プロンプト
-
-# %#	%記号
-# %m	マシン名
-PROMPT=$'%{\e[${PSCOLOR}m%}${USERNAME}@${HOST} %#%{\e[m%} ' #左プロンプト
-
 # lsを弄る
 # http://nao.no-ip.info/index.cgi?.zsh_common
 export LS_OPTIONS='-vG'
 #--show-control-chars -h --color=auto'
-
 # デフォルトから、拡張子ごとの設定を除いた物
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43'
 export LS_COLORS=$LS_COLORS':tw=30;42:ow=34;42:st=37;44:ex=01;32'
@@ -101,6 +72,16 @@ SAVEHIST=100000                       # 保存される履歴の数
 setopt extended_history               # 履歴ファイルに時刻を記録
 function history-all { history -E 1 } # 全履歴の一覧を出力する
 
+# Ctrl-D でログアウトするのを抑制する。
+setopt  ignore_eof
+
+# グロブがマッチしないときエラーにしない
+# http://d.hatena.ne.jp/amt/20060806/ZshNoGlob
+setopt null_glob
+
+# 小文字に対して大文字も補完する
+# http://www.ex-machina.jp/zsh/index.cgi?FAQ%40zsh%A5%B9%A5%EC#l1
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # urlエンコード
 function url-encode { E=${${(j: :)@}//(#b)(?)/%$[[##16]##${match[1]}]} }
@@ -114,10 +95,6 @@ alias -g W="| write"
 
 # エディタ
 alias emacs="emacs -nw" 
-
-# -p: 複数ファイル指定したときにタブに展開
-alias vi="vim -p"
-alias vim="vim -p"
 
 # 文字コード変換
 alias -g EUC="| iconv --from-code=EUC-JP --to-code=UTF-8"
@@ -177,8 +154,6 @@ alias WATCHsudo="sudo watch -d --interval=1"
 function calc () {
     echo $(($@))
 }
-# sin といった数学関数も使える
-zmodload -i zsh/mathfunc
 
 # Begin: .ssh/known_hosts による補完。
 # known_hostsがハッシュ化されていると腐るので注意
@@ -215,47 +190,37 @@ _cache_hosts=( $(< $cache_hosts_file) )
 
 # End: .ssh/known_hosts による補完
 
-
 autoload -U compinit
 compinit
 
-alias rm='rm -i'
-alias e='emacs'
-alias flush_cache='dscacheutil -flushcache'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
-alias javac='javac -J-Dfile.encoding=utf-8'
-alias java='java -Dfile.encoding=utf-8'
-alias gdns='ping 8.8.8.8'
+# For RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin
 
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
+# For autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+if [ -e ~/.conf/zshrc_prompt ]; then
+    source ~/.conf/zshrc_prompt
 fi
 
-# Show branch name in right prompt
-autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-function rprompt-git-current-branch {
-   local name st color gitdir action
-   if [[ "$PWD" =~ '/¥.git(/.*)?$' ]]; then
-      return
-   fi
-   name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-   if [[ -z $name ]]; then
-      return
-   fi
-   gitdir=`git rev-parse --git-dir 2> /dev/null`
-   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
-   st=`git status 2> /dev/null`
-   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-      color=%F{white}
-   elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-      color=%F{blue}
-   elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-      color=%B%F{red}
-   else
-      color=%F{red}
-   fi
-   echo "${color}(${name}${action})%f%b"
-}
+if [ -e ~/.conf/zhsrc_alias ]; then
+    source ~/.conf/zshrc_alias
+fi
 
-alias t="tmux"
-alias ta="tmux a -d"
+if [ -e ~/.conf/zhsrc_ssh ]; then
+    source ~/.conf/zshrc_ssh
+fi
+
+if [ -e ~/.conf/zhsrc_mac ]; then
+    source ~/.conf/zshrc_mac
+fi
+
+if [ -e ~/.conf/zhsrc_debian ]; then
+    source ~/.conf/zshrc_debian
+fi
+
+#### 個人用設定ファイルがあればそれを読み込む
+if [ -e ~/.conf/.zshrc_private ]; then
+    source ~/.conf/.zshrc_private
+fi

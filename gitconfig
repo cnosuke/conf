@@ -1,10 +1,10 @@
 [user]
-	name = cnosuke
-	email = cnosuke@gmail.com
+	name = Shinnosuke TAKEDA
+	email = shinnosuke@gmail.com
 
 [core]
 	excludesfile = /Users/shinnosuke/.gitignore
-    editor = vim
+    editor = emacs
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"

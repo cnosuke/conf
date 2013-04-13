@@ -1,0 +1,18 @@
+alias t="tmux"
+alias ta="tmux a -d"
+alias rm='rm -i'
+alias e='emacs'
+
+alias javac='javac -J-Dfile.encoding=utf-8'
+alias java='java -Dfile.encoding=utf-8'
+
+alias gdns='ping 8.8.8.8'
+
+alias g='git'
+alias gpo='git push origin'
+alias gfo='git fetch origin'
+alias gc='git ci'
+
+
+alias be='bundle exec'
+alias ber='bundle exec rails'

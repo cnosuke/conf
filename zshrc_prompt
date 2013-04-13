@@ -1,0 +1,44 @@
+autoload -U colors  ; colors
+#### スーパーユーザのプロンプトは赤にする
+if [ $UID = 0 ] ; then 
+    PSCOLOR='01;04;31'      # 太字;下線;赤
+    USERNAME=root
+else
+	if [ `uname` = 'Darwin' ]; then;
+		PSCOLOR='00;34' # Macでは青
+	else
+		PSCOLOR='00;32' # Mac以外では緑
+	fi
+  USERNAME=%(!..%n)
+fi
+RPROMPT=$'%{\e[${PSCOLOR}m%}%F{white}[`rprompt-git-current-branch`%~]%f%{\e[00m%}' # 右プロンプト
+
+# %#	%記号
+# %m	マシン名
+PROMPT=$'%{\e[${PSCOLOR}m%}${USERNAME}@${HOST} %#%{\e[m%} '
+
+# Show branch name in right prompt
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+function rprompt-git-current-branch {
+   local name st color gitdir action
+   if [[ "$PWD" =~ '/¥.git(/.*)?$' ]]; then
+      return
+   fi
+   name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+   if [[ -z $name ]]; then
+      return
+   fi
+   gitdir=`git rev-parse --git-dir 2> /dev/null`
+   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+   st=`git status 2> /dev/null`
+   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+      color=%F{white}
+   elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+      color=%F{blue}
+   elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+      color=%B%F{red}
+   else
+      color=%F{red}
+   fi
+   echo "${color}(${name}${action})%f%b"
+}

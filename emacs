@@ -19,7 +19,7 @@
 (setq load-path
       (append
        (list
-        (expand-file-name "~/.elisp/ruby1.8-elisp/")
+        (expand-file-name "~/.conf/elisp/ruby1.8-elisp/")
         )
        load-path))
 
