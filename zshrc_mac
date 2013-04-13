@@ -1,5 +1,0 @@
-alias flush_cache='dscacheutil -flushcache'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
-
-# For autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
