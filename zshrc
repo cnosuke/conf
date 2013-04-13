@@ -204,19 +204,19 @@ if [ -e ~/.conf/zshrc_prompt ]; then
     source ~/.conf/zshrc_prompt
 fi
 
-if [ -e ~/.conf/zhsrc_alias ]; then
+if [ -e ~/.conf/zshrc_alias ]; then
     source ~/.conf/zshrc_alias
 fi
 
-if [ -e ~/.conf/zhsrc_ssh ]; then
+if [ -e ~/.conf/zshrc_ssh ]; then
     source ~/.conf/zshrc_ssh
 fi
 
-if [ -e ~/.conf/zhsrc_mac ]; then
+if [ -e ~/.conf/zshrc_mac ]; then
     source ~/.conf/zshrc_mac
 fi
 
-if [ -e ~/.conf/zhsrc_debian ]; then
+if [ -e ~/.conf/zshrc_debian ]; then
     source ~/.conf/zshrc_debian
 fi
 
