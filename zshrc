@@ -197,9 +197,6 @@ compinit
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH=$PATH:$HOME/.rvm/bin
 
-# For autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
 if [ -e ~/.conf/zshrc_prompt ]; then
     source ~/.conf/zshrc_prompt
 fi
