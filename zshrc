@@ -221,6 +221,6 @@ if [ -e ~/.conf/zshrc_debian ]; then
 fi
 
 #### 個人用設定ファイルがあればそれを読み込む
-if [ -e ~/.conf/.zshrc_private ]; then
-    source ~/.conf/.zshrc_private
+if [ -e ~/.conf/zshrc_private ]; then
+    source ~/.conf/zshrc_private
 fi
