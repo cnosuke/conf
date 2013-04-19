@@ -1,3 +1,4 @@
+#!/bin/zsh
 function backup_config_file(){
 	if [ -e ~/.$1 ]; then
 		mv ~/.$1 ~/.config_backup_`date +"%Y%m%d"`/.
