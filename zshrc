@@ -193,6 +193,8 @@ _cache_hosts=( $(< $cache_hosts_file) )
 autoload -U compinit
 compinit
 
+export EDITOR='emacs'
+
 # For RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH=$PATH:$HOME/.rvm/bin
