@@ -1,4 +1,10 @@
-alias mine='ruby /Users/shinnosuke/TANK/repos/rapidmine/rapidmine.rb'
-alias replace_string='ruby /Users/shinnosuke/GoogleDrive/Tools/replace_string.rb'
+if [ -e ~/.conf/zshrc_cookpad ]; then
+    source ~/.conf/zshrc_cookpad
+fi
 
-alias uglifyjs='/Users/shinnosuke/.npm/uglify-js/2.2.2/package/bin/uglifyjs'
+PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} %#%{\e[m%} '
+export LESS='-R'
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+export GOPATH=$HOME/dev/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/bin

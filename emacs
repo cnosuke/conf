@@ -1,3 +1,5 @@
+(setq make-backup-files nil)
+(setq auto-save-default nil)
 (setq-default tab-width 4 indent-tabs-mode nil)
 (setq c-default-style "linux")
 (if window-system (progn
@@ -65,3 +67,14 @@ and source-file directory for your debugger." t)
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+;; include go mode
+(setq load-path
+      (append
+       (list
+        (expand-file-name "~/.conf/elisp/go-elisp/")
+        )
+       load-path))
+
+(require 'go-mode-load)
+

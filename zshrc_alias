@@ -1,6 +1,8 @@
 alias t="tmux"
 alias ta="tmux a -d"
 alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
 alias e='emacs'
 
 alias javac='javac -J-Dfile.encoding=utf-8'
@@ -16,3 +18,10 @@ alias gc='git ci'
 
 alias be='bundle exec'
 alias ber='bundle exec rails'
+alias bes='bundle exec spring'
+alias besr='bundle exec spring rails'
+
+alias less="less -MN"
+alias rak="rak -C 2"
+
+alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"

@@ -193,9 +193,11 @@ _cache_hosts=( $(< $cache_hosts_file) )
 autoload -U compinit
 compinit
 
+export EDITOR='emacs'
+
 # For RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-PATH=$PATH:$HOME/.rvm/bin
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# PATH=$PATH:$HOME/.rvm/bin
 
 if [ -e ~/.conf/zshrc_prompt ]; then
     source ~/.conf/zshrc_prompt

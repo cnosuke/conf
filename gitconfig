@@ -1,13 +1,15 @@
-[user]
-	name = Shinnosuke TAKEDA
-	email = shinnosuke@gmail.com
-
 [core]
-	excludesfile = /Users/shinnosuke/.gitignore
+	excludesfile = ~/.gitignore
     editor = emacs
+
+[pager]
+        log = diff-highlight | less -MN
+        show = diff-highlight | less -MN
+        diff = diff-highlight | less -MN
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
@@ -15,6 +17,9 @@
 
 [push]
     default = tracking
+
+[pull]
+    rebase = true
 
 [alias]
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/'
@@ -25,9 +30,23 @@
     ci = commit -am
     co = checkout
     di = diff
+    dw = diff --word-diff=color
+    db = diff -b
     lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn \n %Creset%s'
     up = pull --rebase
     sh = show
     st = status
     wc = whatchanged --graph
-    lv  = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn %Cred%h\n  %Creset%s' --name-status
+    lv = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn %Cred%h\n  %Creset%s' --name-status
+    wb = browse-remote
+    pull-dry-run  = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD) ;git diff --stat --summary ${B}..origin/${B}"
+    push-me-f = !"B=$(git rev-parse --abbrev-ref HEAD);git push me -f ${B}"
+    pmf = !"git push-me-f"
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+
+[include]
+    path = ~/.conf/gitconfig.local
