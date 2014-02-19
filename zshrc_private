@@ -2,7 +2,7 @@ if [ -e ~/.conf/zshrc_cookpad ]; then
     source ~/.conf/zshrc_cookpad
 fi
 
-PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} %#%{\e[m%} '
+PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} \U2708 %{\e[m%}'
 export LESS='-R'
 export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 export GOPATH=$HOME/dev/go
