@@ -38,6 +38,7 @@
     st = status
     wc = whatchanged --graph
     lv = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn %Cred%h\n  %Creset%s' --name-status
+    gr = grep -C 3 -i -n --color=auto
     wb = browse-remote
     pull-dry-run  = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD) ;git diff --stat --summary ${B}..origin/${B}"
     push-me-f = !"B=$(git rev-parse --abbrev-ref HEAD);git push me -f ${B}"

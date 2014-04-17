@@ -102,3 +102,5 @@ _yardoc
 # doc/
 
 .gitkeep
+
+*/public/localhost*
