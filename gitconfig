@@ -3,9 +3,9 @@
     editor = emacs
 
 [pager]
-        log = diff-highlight | less -MN
-        show = diff-highlight | less -MN
-        diff = diff-highlight | less -MN
+        log = diff-highlight | less -M
+        show = diff-highlight | less -M
+        diff = diff-highlight | less -M
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -23,11 +23,13 @@
 
 [alias]
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/'
+    a  = add --verbose
     ad = add .
     br = branch
     ba = branch -a
     bn = branch --no-merged
     ci = commit -am
+    cm = commit -m
     co = checkout
     di = diff
     dw = diff --word-diff=color
