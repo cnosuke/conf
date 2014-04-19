@@ -219,7 +219,16 @@ if [ -e ~/.conf/zshrc_debian ]; then
     source ~/.conf/zshrc_debian
 fi
 
+if [ -e ~/.conf/zshrc_rbenv ]; then
+    source ~/.conf/zshrc_rbenv
+fi
+
+if [ -e ~/.conf/zshrc_pyenv ]; then
+    source ~/.conf/zshrc_pyenv
+fi
+
 #### 個人用設定ファイルがあればそれを読み込む
 if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
+
