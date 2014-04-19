@@ -10,3 +10,8 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/bin
 
 export PATH=$PATH:/usr/local/bin
+
+alias mysql_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
+alias mysql_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
+alias postgres_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
+alias postgres_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
