@@ -15,6 +15,7 @@ alias gpo='git push origin'
 alias gfo='git fetch origin'
 alias gc='git ci'
 alias gg='git gr'
+alias gh='git log -1 --format=format:%h | pbcopy'
 
 alias be='bundle exec'
 alias ber='bundle exec rails'
