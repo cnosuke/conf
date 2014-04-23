@@ -5,6 +5,8 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias e='emacs'
 
+alias -g P="| percol"
+
 alias javac='javac -J-Dfile.encoding=utf-8'
 alias java='java -Dfile.encoding=utf-8'
 
@@ -16,6 +18,7 @@ alias gfo='git fetch origin'
 alias gc='git ci'
 alias gg='git gr'
 alias gh='git log -1 --format=format:%h | pbcopy'
+alias gpc='git branch | percol | xargs git checkout'
 
 alias be='bundle exec'
 alias ber='bundle exec rails'
