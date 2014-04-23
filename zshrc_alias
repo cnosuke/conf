@@ -6,6 +6,7 @@ alias cp='cp -i'
 alias e='emacs'
 
 alias -g P="| percol"
+alias -g pls="find . -type f -follow| percol | xargs less -NM"
 
 alias javac='javac -J-Dfile.encoding=utf-8'
 alias java='java -Dfile.encoding=utf-8'
