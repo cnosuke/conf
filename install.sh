@@ -26,3 +26,4 @@ back_and_make gitignore
 back_and_make screenrc
 back_and_make tmux.conf
 back_and_make zshrc
+back_and_make percol.d
