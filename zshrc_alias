@@ -31,3 +31,19 @@ alias less="less -MN"
 alias rak="rak -C 2"
 
 alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"
+
+function d(){
+  open "dash://$1 $2 $3"
+}
+
+function d-rails(){
+  open "dash://rails:$1$2 $3"
+}
+
+function d-rails(){
+  open "dash://rails:$1 $2 $3"
+}
+
+function d-ruby(){
+  open "dash://ruby:$1 $2 $3"
+}
