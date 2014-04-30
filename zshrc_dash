@@ -1,0 +1,17 @@
+function dash(){
+  open "dash://$1 $2 $3 $4"
+}
+
+alias d=dash
+
+function d-rails(){
+  open "dash://rails:$1$2 $3"
+}
+
+function d-rails(){
+  open "dash://rails:$1 $2 $3"
+}
+
+function d-ruby(){
+  open "dash://ruby:$1 $2 $3"
+}

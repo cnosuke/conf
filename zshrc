@@ -231,6 +231,10 @@ if [ -e ~/.conf/zshrc_percol ]; then
     source ~/.conf/zshrc_percol
 fi
 
+if [ -e ~/.conf/zshrc_dash ]; then
+    source ~/.conf/zshrc_dash
+fi
+
 #### 個人用設定ファイルがあればそれを読み込む
 if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
