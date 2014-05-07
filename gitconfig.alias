@@ -22,3 +22,4 @@
     pull-dry-run  = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD) ;git diff --stat --summary ${B}..origin/${B}"
     push-me-f = !"B=$(git rev-parse --abbrev-ref HEAD);git push me -f ${B}"
     pmf = !"git push-me-f"
+    rema = rebase master
