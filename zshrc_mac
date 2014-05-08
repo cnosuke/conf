@@ -1,5 +1,7 @@
-alias flush_cache='dscacheutil -flushcache'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
+if [ `uname` = 'Darwin' ]; then;
+  alias flush_cache='dscacheutil -flushcache'
+  alias updatedb='sudo /usr/libexec/locate.updatedb'
 
-# For autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+  # For autojump
+  [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+fi
