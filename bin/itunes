@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require 'itunes-client'
+
+player = Itunes::Player
+
+p player.send(*ARGV)
