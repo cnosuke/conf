@@ -1,19 +1,18 @@
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
     editor = emacs
 
 [pager]
-        log = diff-highlight | less -M
-        show = diff-highlight | less -M
-        diff = diff-highlight | less -M
+    log = diff-highlight | less -M
+    show = diff-highlight | less -M
+    diff = diff-highlight | less -M
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [push]
     default = tracking
