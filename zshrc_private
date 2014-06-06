@@ -2,7 +2,7 @@ if [ -e ~/.conf/zshrc_cookpad ]; then
     source ~/.conf/zshrc_cookpad
 fi
 
-PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} \U2708 %{\e[m%}'
+
 export LESS='-R'
 export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 export GOPATH=$HOME/dev/go
@@ -17,3 +17,5 @@ alias mysql_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mysql.pl
 alias mysql_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
 alias postgres_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
 alias postgres_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
+
+PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} \U2708 %{\e[m%}'
