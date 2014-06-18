@@ -18,4 +18,4 @@ alias mysql_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.pli
 alias postgres_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
 alias postgres_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
 
-PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} \U2708 %{\e[m%}'
+PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} \U2708 (੭ ◕㉨◕)੭ %{\e[m%}'
