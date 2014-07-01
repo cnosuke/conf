@@ -5,9 +5,9 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias e='emacs'
 
-alias -g P="| peco"
-alias pls="find . -type f -follow| peco | xargs less -NM"
-alias fp="find . -follow| peco | tr -d '\n' | pbcopy"
+alias -g P="| percol"
+alias pls="find . -type f -follow| percol | xargs less -NM"
+alias fp="find . -follow| percol | tr -d '\n' | pbcopy"
 
 alias javac='javac -J-Dfile.encoding=utf-8'
 alias java='java -Dfile.encoding=utf-8'
@@ -20,7 +20,7 @@ alias gfo='git fetch origin'
 alias gc='git ci'
 alias gg='git gr'
 alias gh='git log -1 --format=format:%h | pbcopy'
-alias gpc='git branch | peco | xargs git checkout'
+alias gpc='git branch | percol | xargs git checkout'
 
 alias be='bundle exec'
 alias ber='bundle exec rails'
@@ -31,3 +31,5 @@ alias less="less -MN"
 alias rak="rak -C 2"
 
 alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"
+
+alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
