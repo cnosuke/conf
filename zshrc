@@ -227,8 +227,8 @@ if [ -e ~/.conf/zshrc_pyenv ]; then
     source ~/.conf/zshrc_pyenv
 fi
 
-if [ -e ~/.conf/zshrc_percol ]; then
-    source ~/.conf/zshrc_percol
+if [ -e ~/.conf/zshrc_peco ]; then
+    source ~/.conf/zshrc_peco
 fi
 
 if [ -e ~/.conf/zshrc_dash ]; then
