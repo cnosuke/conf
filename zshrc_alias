@@ -31,5 +31,6 @@ alias less="less -MN"
 alias rak="rak -C 2"
 
 alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"
+alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify_kayac 'Success') || (say 'Failed' && terminal-notifier -message 'Failed' && notify_kayac 'Failed' )"
 
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'

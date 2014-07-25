@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require __dir__ + '/im_kayac'
+
+im = IM::Kayac.new('cnosuke', id: 'cnosuke', sig: ENV['IM_KAYAC_SIG'])
+im.notify(ARGV.first)
+

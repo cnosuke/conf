@@ -1,6 +1,7 @@
 autoload -U colors  ; colors
+
 #### スーパーユーザのプロンプトは赤にする
-if [ $UID = 0 ] ; then 
+if [ $UID = 0 ] ; then
     PSCOLOR='01;04;31'      # 太字;下線;赤
     USERNAME=root
 else
@@ -11,11 +12,11 @@ else
 	fi
   USERNAME=%(!..%n)
 fi
+
 RPROMPT=$'%{\e[${PSCOLOR}m%}%F{white}[`rprompt-git-current-branch`%~]%f%{\e[00m%}' # 右プロンプト
 
-# %#	%記号
-# %m	マシン名
 PROMPT=$'%{\e[${PSCOLOR}m%}${USERNAME}@${HOST} %#%{\e[m%} '
+
 
 # Show branch name in right prompt
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null

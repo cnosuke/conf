@@ -1,3 +1,7 @@
+if [ -e ~/.conf/zshrc_time_measure ]; then
+   source ~/.conf/zshrc_time_measure
+fi
+
 # zsh config file dir
 export ZDOTDIR=${HOME}
 
@@ -94,7 +98,7 @@ alias -g L="| lv -c"	# less -R
 alias -g W="| write"
 
 # エディタ
-alias emacs="emacs -nw" 
+alias emacs="emacs -nw"
 
 # 文字コード変換
 alias -g EUC="| iconv --from-code=EUC-JP --to-code=UTF-8"
@@ -158,35 +162,35 @@ function calc () {
 # Begin: .ssh/known_hosts による補完。
 # known_hostsがハッシュ化されていると腐るので注意
 
-make_p () {
-    local t s
-    t="$1"; shift
-
-    [ -f $t ] || return 0
-
-    for s; do
-	[ $s -nt $t ] && return 0
-    done
-
-    return 1
-}
-
-cache_hosts_file="$ZDOTDIR/.cache_hosts"
-known_hosts_file="$HOME/.ssh/known_hosts"
-
-print_cache_hosts () {
-    if [ -f $known_hosts_file ]; then
-	awk '{ if (split($1, a, ",") > 1) for (i in a) { if (a[i] ~ /^[a-z]/) print a[i] } else print $1 }' $known_hosts_file
-    fi
-}
-
-update_cache_hosts () {
-    print_cache_hosts | sort -u > $cache_hosts_file
-}
-
-make_p $cache_hosts_file $known_hosts_file && update_cache_hosts
-
-_cache_hosts=( $(< $cache_hosts_file) )
+# make_p () {
+#     local t s
+#     t="$1"; shift
+#
+#     [ -f $t ] || return 0
+#
+#     for s; do
+# 	[ $s -nt $t ] && return 0
+#     done
+#
+#     return 1
+# }
+#
+# cache_hosts_file="$ZDOTDIR/.cache_hosts"
+# known_hosts_file="$HOME/.ssh/known_hosts"
+#
+# print_cache_hosts () {
+#     if [ -f $known_hosts_file ]; then
+# 	awk '{ if (split($1, a, ",") > 1) for (i in a) { if (a[i] ~ /^[a-z]/) print a[i] } else print $1 }' $known_hosts_file
+#     fi
+# }
+#
+# update_cache_hosts () {
+#     print_cache_hosts | sort -u > $cache_hosts_file
+# }
+#
+# make_p $cache_hosts_file $known_hosts_file && update_cache_hosts
+#
+# _cache_hosts=( $(< $cache_hosts_file) )
 
 # End: .ssh/known_hosts による補完
 
@@ -199,44 +203,65 @@ export EDITOR='emacs'
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # PATH=$PATH:$HOME/.rvm/bin
 
-if [ -e ~/.conf/zshrc_prompt ]; then
-    source ~/.conf/zshrc_prompt
+start
+if [ -e ~/.conf/zshrc_cookpad ]; then
+    source ~/.conf/zshrc_cookpad
+else
+    if [ -e ~/.conf/zshrc_rbenv ]; then
+        source ~/.conf/zshrc_rbenv
+    fi
 fi
+finish zshrc_cookpad
 
-if [ -e ~/.conf/zshrc_alias ]; then
-    source ~/.conf/zshrc_alias
-fi
-
-if [ -e ~/.conf/zshrc_ssh ]; then
-    source ~/.conf/zshrc_ssh
-fi
-
+start
 if [ -e ~/.conf/zshrc_mac ]; then
     source ~/.conf/zshrc_mac
 fi
+finish zshrc_mac
 
+start
+if [ -e ~/.conf/zshrc_prompt ]; then
+    source ~/.conf/zshrc_prompt
+fi
+finish zshrc_prompt
+
+start
+if [ -e ~/.conf/zshrc_alias ]; then
+    source ~/.conf/zshrc_alias
+fi
+finish zshrc_alias
+
+start
+if [ -e ~/.conf/zshrc_ssh ]; then
+    source ~/.conf/zshrc_ssh
+fi
+finish zshrc_ssh
+
+start
 if [ -e ~/.conf/zshrc_debian ]; then
     source ~/.conf/zshrc_debian
 fi
-
-if [ -e ~/.conf/zshrc_rbenv ]; then
-    source ~/.conf/zshrc_rbenv
-fi
+finish zshrc_debian
 
 if [ -e ~/.conf/zshrc_pyenv ]; then
-    source ~/.conf/zshrc_pyenv
+    # source ~/.conf/zshrc_pyenv
 fi
 
+start
 if [ -e ~/.conf/zshrc_peco ]; then
     source ~/.conf/zshrc_peco
 fi
+finish zshrc_peco
 
+start
 if [ -e ~/.conf/zshrc_dash ]; then
     source ~/.conf/zshrc_dash
 fi
+finish zshrc_dash
 
 #### 個人用設定ファイルがあればそれを読み込む
+start
 if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
-
+finish zshrc_private
