@@ -1,3 +1,5 @@
+# http://k0kubun.hatenablog.com/entry/2014/07/25/135521
+
 function start() {
     return
     START_TIME=`~/.conf/bin/unixnano`
