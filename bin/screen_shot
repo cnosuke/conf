@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'capybara-webkit'
+
+def abort(str)
+  $stderr.puts 'Syntax: screen_shot #{URL} #{SAVE_TO} #{SIZE}'
+  $stderr.puts str
+  exit 1
+end
+
+url, save_to, size = ARGV
+
+abort 'ERROR: URL should be like /^http?\:\/\//' unless url =~ /^http?\:\/\//
+abort 'ERROR: SIZE should be like /^\d+x\d+$/' unless size =~ /^\d+x\d+$/
+
+browser = Capybara::Webkit::Driver.new('web_capture').browser
+browser.visit url
+browser.render("#{__dir__}/#{save_to}", *(size.split('x')))
+
