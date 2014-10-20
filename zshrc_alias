@@ -5,9 +5,11 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias e='emacs'
 
-alias -g P="| percol"
-alias pls="find . -type f -follow| percol | xargs less -NM"
-alias fp="find . -follow| percol | tr -d '\n' | pbcopy"
+alias -g P="| peco"
+alias pls="find . -type f -follow| peco | xargs less -NM"
+
+# For Mac OS X only
+alias fp="find . -follow| peco | tr -d '\n' | pbcopy"
 
 alias javac='javac -J-Dfile.encoding=utf-8'
 alias java='java -Dfile.encoding=utf-8'
