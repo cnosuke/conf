@@ -28,3 +28,4 @@ back_and_make tmux.conf
 back_and_make zshrc
 back_and_make percol.d
 back_and_make pryrc
+back_and_make gemrc
