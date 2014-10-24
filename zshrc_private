@@ -16,3 +16,7 @@ alias postgres_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postg
 alias postgres_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
 
 PROMPT=$'%{\e[${PSCOLOR}m%}%D{%m/%d %T} \U2708 (੭ ◕㉨◕)੭ %{\e[m%}'
+
+_copyline() { print -rn $BUFFER | pbcopy; zle -M "Copied: ${BUFFER}" }
+zle -N _copyline
+bindkey '@@' _copyline
