@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+current_branch = `git symbolic-ref --short HEAD`.strip
+origin = `git config remote.origin.url`.match(/(\w+).git$/)[1]
+origin_host = `git config remote.origin.url`.match(/@(.+)\:/)[1]
+my_account = `git config user.email`.split(/\@/)[0]
+
+if system "git push -f me #{current_branch}"
+  url = "https://#{origin_host}/#{my_account}/#{origin}/compare/#{current_branch}?expand=1"
+  puts url
+  system 'open', url
+else
+  raise "Error on git push -f me #{current_branch}"
+end
