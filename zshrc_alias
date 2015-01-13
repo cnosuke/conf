@@ -20,7 +20,8 @@ alias g='git'
 alias gpo='git push origin'
 alias gfo='git fetch origin'
 alias gc='git ci'
-alias gg='git gr'
+# alias gg='git gr'
+alias gg='echo "Use ag instead."'
 alias gh='git log -1 --format=format:%h | pbcopy'
 alias gpc='git branch | percol | xargs git checkout'
 
@@ -36,3 +37,5 @@ alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (sa
 alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify_kayac 'Success') || (say 'Failed' && terminal-notifier -message 'Failed' && notify_kayac 'Failed' )"
 
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
+
+alias ag='ag --pager="less -F -R" -A 3 -B 3'

@@ -28,3 +28,7 @@
 [include]
     path = ~/.conf/gitconfig.alias
     path = ~/.conf/gitconfig.local # For local settings
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
