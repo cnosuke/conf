@@ -6,7 +6,7 @@ alias cp='cp -i'
 alias e='emacs'
 
 alias -g P="| peco"
-alias pls="find . -type f -follow| peco | xargs less -NM"
+alias pls="find . -type f -follow| peco | xargs less -M -N -R"
 
 # For Mac OS X only
 alias fp="find . -follow| peco | tr -d '\n' | pbcopy"
@@ -30,7 +30,7 @@ alias ber='bundle exec rails'
 alias bes='bundle exec spring'
 alias besr='bundle exec spring rails'
 
-alias less="less -MN"
+alias less="less -M -N -R"
 alias rak="rak -C 2"
 
 alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"
@@ -38,4 +38,4 @@ alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify
 
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
 
-alias ag='ag --pager="less -F -R" -A 3 -B 3'
+alias ag='ag --pager="less -M -R" -A 3 -B 3'

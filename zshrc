@@ -92,7 +92,7 @@ function url-encode { E=${${(j: :)@}//(#b)(?)/%$[[##16]##${match[1]}]} }
 function url-decode { D=${1//\%(#b)([0-F][0-F])/\\\x$match[1]} }
 
 # 要するにless。
-alias -g L="| lv -c"	# less -R
+alias -g L="| less -R -N -M"
 
 # 指定したユーザーにメッセージを送る
 alias -g W="| write"
