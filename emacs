@@ -69,12 +69,12 @@ and source-file directory for your debugger." t)
  )
 
 ;; include go mode
-(setq load-path
-      (append
-       (list
-        (expand-file-name "~/.conf/elisp/go-elisp/")
-        )
-       load-path))
-
-(require 'go-mode-load)
+;;(setq load-path
+;;     (append
+;;       (list
+;;        (expand-file-name "~/.conf/elisp/go-elisp/")
+;;        )
+;;       load-path))
+;;
+;;(require 'go-mode-load)
 
