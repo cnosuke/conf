@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'rest-client'
+require 'json'
+
+
+
+
+class PushBulletClient
+  API_BASE = 'https://api.pushbullet.com/v2'
+
+  class << self
+    def token
+      ENV['ACCESS_TOKEN']
+    end
+    
+    def options(opt = {})
+      default = {
+        :content_type => :json,
+        'Authorization' => "Bearer #{token}"
+      }
+      
+      default.merge(opt)
+    end
+
+    def push(arg)
+      default = { 
+        type: :note,
+        title: 'notify',
+        body: (arg.is_a?(String) ? arg : arg['']
+      }
+      body = { "type": "note", "title": "Note Title", "body": "Note Body"}
+
+      ::RestClient.post("#{API_BASE}/pushes", body.to_json, options)      
+    end
+  end
+end
+
+p PushBulletClient.push(0)
