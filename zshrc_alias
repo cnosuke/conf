@@ -1,3 +1,7 @@
+function ignore-git-find() {
+   find $1 \( -type d -name '.git' -prune \) -or \( $*[2,-1] -print \)
+}
+
 alias t="tmux"
 alias ta="tmux a -d"
 alias rm='rm -i'
@@ -6,7 +10,8 @@ alias cp='cp -i'
 alias e='emacs'
 
 alias -g P="| peco"
-alias pls="find . -type f -follow| peco | xargs less -M -N -R"
+alias pfind="ignore-git-find . -type f -follow| peco | ruby -e 'print STDIN.read.chomp'"
+alias pls="ignore-git-find . -type f -follow| peco | xargs less -M -N -R"
 
 # For Mac OS X only
 alias fp="find . -follow| peco | tr -d '\n' | pbcopy"
@@ -39,3 +44,5 @@ alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
 
 alias ag='ag --pager="less -M -R" -A 3 -B 3'
+
+alias pe='emacs $(pfind)'
