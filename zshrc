@@ -263,6 +263,12 @@ if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
 
+export PATH=$PATH:/usr/local/Cellar/git/2.3.5/share/git-core/contrib/diff-highlight/
+
+if [ -e ~/.conf/zshrc_known_hosts ]; then
+    source ~/.conf/zshrc_known_hosts
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/cnosuke/.sdkman"
 [[ -s "/Users/cnosuke/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnosuke/.sdkman/bin/sdkman-init.sh"

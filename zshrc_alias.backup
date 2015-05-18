@@ -1,0 +1,53 @@
+function ignore-git-find() {
+   find $1 \( -type d -name '.git' -prune \) -or \( $*[2,-1] -print \)
+}
+
+alias t="tmux"
+alias ta="tmux a -d"
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias e='emacs'
+
+alias -g P="| peco"
+alias pfind="ignore-git-find . -type f -follow| peco | ruby -e 'print STDIN.read.chomp'"
+alias pls="ignore-git-find . -type f -follow| peco | xargs less -M -N -R"
+
+# For Mac OS X only
+alias fp="find . -follow| peco | tr -d '\n' | pbcopy"
+
+alias javac='javac -J-Dfile.encoding=utf-8'
+alias java='java -Dfile.encoding=utf-8'
+
+alias gdns='ping 8.8.8.8'
+
+alias g='git'
+alias gpo='git push origin'
+alias gfo='git fetch origin'
+alias gc='git ci'
+# alias gg='git gr'
+alias gg='echo "Use ag instead."'
+alias gh='git log -1 --format=format:%h | pbcopy'
+alias gpc='git branch | percol | xargs git checkout'
+
+alias be='bundle exec'
+alias ber='bundle exec rails'
+alias bes='bundle exec spring'
+alias besr='bundle exec spring rails'
+
+alias less="less -M -N -R"
+alias rak="rak -C 2"
+
+alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"
+alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && envchain pushbullet notify_pushbullet 'Success') || (say 'Failed' && terminal-notifier -message 'Failed' && envchain pushbullet notify_pushbullet 'Failed' )"
+
+alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
+
+alias ag='ag --pager="less -M -R" -A 3 -B 3'
+
+alias pe='emacs $(pfind)'
+
+alias -g PB='&& (envchain pushbullet notify_pushbullet Success) || (envchain pushbullet notify_pushbullet Failed)'
+
+alias amesh="curl -L 'https://ame.cnosuke.com/current' 2> /dev/null |imgcat"
+alias ytenki="curl -L 'http://ytenki.cnosuke.com/d/13-4410.jpg' 2> /dev/null |imgcat"

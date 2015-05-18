@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require 'json'
+
+minutes, type, message = *ARGV
+
+start_time = Time.now
+puts "START Pomodoro[#{start_time.to_s}]: #{minutes}minutes of #{type}: #{message}"
+
+m = minutes.to_i * 60
+t = 0
+loop do
+  sleep 1
+  t += 1
+  c_min = t/60
+  c_sec = t%60
+  print " NOW: #{c_min} : #{c_sec}\r"
+  if t == m
+    break
+  end
+end
+
+open("#{ENV['HOME']}/.pomodoro_logs",'w') do |io|
+  j = { time: start_time, minutes: minutes, type: type, message: message }.to_json
+  io.puts j
+end
+
+system('say Pomodoro Done!!')
+system('envchain pushbullet notify_pushbullet PomodoroDone!!')

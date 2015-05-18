@@ -1,0 +1,7 @@
+function kh() { # known hosts
+  if [ $# -ne 0 ]; then
+    ssh "$@"@`cat ~/.ssh/known_hosts | sed -ne '/compute\.internal/s/^\[\([^]]*\).*$/\1/p' ~/.ssh/known_hosts | sort -u | peco`
+  else
+    ssh `cat ~/.ssh/known_hosts | sed -ne '/compute\.internal/s/^\[\([^]]*\).*$/\1/p' ~/.ssh/known_hosts | sort -u | peco`
+  fi
+}

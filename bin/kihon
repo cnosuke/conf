@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'open-uri'
+
+j = JSON.parse(open('https://www.kimonolabs.com/api/4tabuflk?kimmodify=1').read)
+puts <<EOB
+#{j['date']}#{j['title']}
+
+#{j['message']}
+EOB

@@ -1,0 +1,34 @@
+REPO_DIR=/Users/shinnosuke-takeda/isucon/webapp
+BOOTSTRAP_DIR=/Users/shinnosuke-takeda/isucon/bootstrap
+PEM_PATH=/Users/shinnosuke-takeda/Downloads/isucon_20140913.pem
+MASTER_HOST=ec2-54-64-122-222.ap-northeast-1.compute.amazonaws.com
+#CNOSUKE_HOST=ec2-54-64-193-87.ap-northeast-1.compute.amazonaws.com
+CNOSUKE_HOST=ec2-54-64-211-59.ap-northeast-1.compute.amazonaws.com
+KOKUBUN_HOST=ec2-54-64-116-174.ap-northeast-1.compute.amazonaws.com
+RKMATHI_HOST=ec2-54-64-206-232.ap-northeast-1.compute.amazonaws.com
+
+alias master-deploy="cd $REPO_DIR; itamae ssh deploy.rb -h $MASTER_HOST -u ec2-user -i $PEM_PATH"
+alias master-bench="cd $REPO_DIR; itamae ssh bench.rb -l debug -h $MASTER_HOST -u ec2-user -i $PEM_PATH"
+
+alias k0kubun-deploy="cd $REPO_DIR; itamae ssh deploy.rb -h $KOKUBUN_HOST -u ec2-user -i $PEM_PATH"
+alias k0kubun-bench="cd $REPO_DIR; itamae ssh bench.rb -l debug -h $KOKUBUN_HOST -u ec2-user -i $PEM_PATH"
+alias k0kubun-local="cd $REPO_DIR; LOCAL_DEPLOY=true itamae ssh deploy.rb -h $KOKUBUN_HOST -u ec2-user -i $PEM_PATH"
+
+alias cnosuke-deploy="cd $REPO_DIR; itamae ssh deploy.rb -h $CNOSUKE_HOST -u ec2-user -i $PEM_PATH"
+alias cnosuke-bench="cd $REPO_DIR; itamae ssh bench.rb -l debug -h $CNOSUKE_HOST -u ec2-user -i $PEM_PATH"
+alias cnosuke-local="cd $REPO_DIR; LOCAL_DEPLOY=true itamae ssh deploy.rb -h $CNOSUKE_HOST -u ec2-user -i $PEM_PATH"
+
+alias rkmathi-deploy="cd $REPO_DIR; itamae ssh deploy.rb -h $RKMATHI_HOST -u ec2-user -i $PEM_PATH"
+alias rkmathi-bench="cd $REPO_DIR; itamae ssh bench.rb -l debug -h $RKMATHI_HOST -u ec2-user -i $PEM_PATH"
+alias rkmathi-local="cd $REPO_DIR; LOCAL_DEPLOY=true itamae ssh deploy.rb -h $RKMATHI_HOST -u ec2-user -i $PEM_PATH"
+
+alias master-middleware="cd $BOOTSTRAP_DIR; itamae ssh middleware.rb -h $MASTER_HOST -u ec2-user -i $PEM_PATH"
+alias rkmathi-middleware="cd $BOOTSTRAP_DIR; itamae ssh middleware.rb -h $RKMATHI_HOST -u ec2-user -i $PEM_PATH"
+alias k0kubun-middleware="cd $BOOTSTRAP_DIR; itamae ssh middleware.rb -h $KOKUBUN_HOST -u ec2-user -i $PEM_PATH"
+alias cnosuke-middleware="cd $BOOTSTRAP_DIR; itamae ssh middleware.rb -h $CNOSUKE_HOST -u ec2-user -i $PEM_PATH"
+
+
+alias ssh-master="ssh isucon@$MASTER_HOST"
+alias ssh-k0kubun="ssh isucon@$KOKUBUN_HOST"
+alias ssh-cnosuke="ssh isucon@$CNOSUKE_HOST"
+alias ssh-rkmathi="ssh isucon@$RKMATHI_HOST"
