@@ -9,6 +9,7 @@ export PATH=$HOME/.conf/bin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=/usr/local/lib/node_modules:$PATH
 export PATH=/usr/local/lib/node_modules/grunt-cli/bin:$PATH
+export PATH=/share/git-core/contrib:$PATH
 
 alias mysql_stop='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'
 alias mysql_start='launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist'

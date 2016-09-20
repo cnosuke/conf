@@ -195,7 +195,7 @@ function calc () {
 # End: .ssh/known_hosts による補完
 
 autoload -U compinit
-compinit
+compinit -u
 
 export EDITOR='emacs'
 
