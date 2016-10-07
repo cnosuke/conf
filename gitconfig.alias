@@ -23,3 +23,7 @@
     push-me-f = !"B=$(git rev-parse --abbrev-ref HEAD);git push me -f ${B}"
     pmf = !"git push-me-f"
     rema = rebase master
+    push-origin = !"B=$(git rev-parse --abbrev-ref HEAD);git push origin ${B}"
+    push-origin-f = !"B=$(git rev-parse --abbrev-ref HEAD);git push origin -f ${B}"
+    po = !"git push-origin"
+    pof = !"git push-origin-f"

@@ -38,7 +38,7 @@ alias besr='bundle exec spring rails'
 alias less="less -M -N -R"
 alias rak="rak -C 2"
 
-alias -g SAY="&& (say 'Success' && terminal-notifier -message 'Success' ) || (say 'Failed' && terminal-notifier -message 'Failed')"
+alias -g SAY="&& (say -v Alex 'Success' && terminal-notifier -message 'Success' ) || (say -v Alex 'Failed' && terminal-notifier -message 'Failed')"
 alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify_kayac 'Success') || (say 'Failed' && terminal-notifier -message 'Failed' && notify_kayac 'Failed' )"
 
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
