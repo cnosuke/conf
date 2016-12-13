@@ -1,3 +1,6 @@
+[user]
+    name = "Shinnosuke Takeda"
+    email = shinnosuke@gmail.com
 [core]
     excludesfile = ~/.gitignore
     editor = emacs

@@ -1,5 +1,9 @@
 alias :r :require
 
+def l
+  Pry.history.load
+end
+
 def r(name)
   require name.to_s
 end
@@ -32,3 +36,4 @@ Pry.config.prompt = [
     "[#{pry.input_array.size}] #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}(#{Pry.view_clip(target_self)})#{nested}* "
   }
 ]
+

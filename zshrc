@@ -244,7 +244,7 @@ fi
 finish zshrc_debian
 
 if [ -e ~/.conf/zshrc_pyenv ]; then
-    # source ~/.conf/zshrc_pyenv
+    source ~/.conf/zshrc_pyenv
 fi
 
 start
@@ -265,3 +265,15 @@ if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
 finish zshrc_private
+
+if [ -e ~/.conf/zshrc_gcloud ]; then
+    source ~/.conf/zshrc_gcloud
+fi
+
+if [ -e ~/.conf/zshrc_k8s ]; then
+    source ~/.conf/zshrc_k8s
+fi
+
+if [ -e ~/.conf/zshrc_aws ]; then
+    source ~/.conf/zshrc_aws
+fi
