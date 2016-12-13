@@ -199,72 +199,41 @@ compinit -u
 
 export EDITOR='emacs'
 
-# For RVM
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-# PATH=$PATH:$HOME/.rvm/bin
-
-start
-if [ -e ~/.conf/zshrc_cookpad ]; then
-    source ~/.conf/zshrc_cookpad
-else
-    if [ -e ~/.conf/zshrc_rbenv ]; then
-        source ~/.conf/zshrc_rbenv
-    fi
+if [ -e ~/.conf/zshrc_rbenv ]; then
+  source ~/.conf/zshrc_rbenv
 fi
-finish zshrc_cookpad
-
-start
-if [ -e ~/.conf/zshrc_mac ]; then
-    source ~/.conf/zshrc_mac
-fi
-finish zshrc_mac
-
-start
-if [ -e ~/.conf/zshrc_prompt ]; then
-    source ~/.conf/zshrc_prompt
-fi
-finish zshrc_prompt
-
-start
-if [ -e ~/.conf/zshrc_alias ]; then
-    source ~/.conf/zshrc_alias
-fi
-finish zshrc_alias
-
-start
-if [ -e ~/.conf/zshrc_ssh ]; then
-    source ~/.conf/zshrc_ssh
-fi
-finish zshrc_ssh
-
-start
-if [ -e ~/.conf/zshrc_debian ]; then
-    source ~/.conf/zshrc_debian
-fi
-finish zshrc_debian
 
 if [ -e ~/.conf/zshrc_pyenv ]; then
     source ~/.conf/zshrc_pyenv
 fi
 
-start
+if [ -e ~/.conf/zshrc_mac ]; then
+    source ~/.conf/zshrc_mac
+fi
+
+if [ -e ~/.conf/zshrc_prompt ]; then
+    source ~/.conf/zshrc_prompt
+fi
+
+if [ -e ~/.conf/zshrc_alias ]; then
+    source ~/.conf/zshrc_alias
+fi
+
+if [ -e ~/.conf/zshrc_ssh ]; then
+    source ~/.conf/zshrc_ssh
+fi
+
+if [ -e ~/.conf/zshrc_debian ]; then
+    source ~/.conf/zshrc_debian
+fi
+
 if [ -e ~/.conf/zshrc_peco ]; then
     source ~/.conf/zshrc_peco
 fi
-finish zshrc_peco
 
-start
 if [ -e ~/.conf/zshrc_dash ]; then
     source ~/.conf/zshrc_dash
 fi
-finish zshrc_dash
-
-#### 個人用設定ファイルがあればそれを読み込む
-start
-if [ -e ~/.conf/zshrc_private ]; then
-    source ~/.conf/zshrc_private
-fi
-finish zshrc_private
 
 if [ -e ~/.conf/zshrc_gcloud ]; then
     source ~/.conf/zshrc_gcloud
@@ -276,4 +245,9 @@ fi
 
 if [ -e ~/.conf/zshrc_aws ]; then
     source ~/.conf/zshrc_aws
+fi
+
+#### 個人用設定ファイルがあればそれを読み込む
+if [ -e ~/.conf/zshrc_private ]; then
+    source ~/.conf/zshrc_private
 fi

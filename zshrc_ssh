@@ -1,5 +1,2 @@
 ##### SSH series #####
-alias icho='ssh s0811470@icho.u.tsukuba.ac.jp'
 alias gaia='ssh cnosuke@gaia.cnosuke.com'
-alias okushun='ssh stakeda@okushun.iplab.cs.tsukuba.ac.jp'
-alias naboo='ssh cnosuke@naboo.cnosuke.com'

@@ -61,3 +61,7 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+alias -g P="| peco"
+alias pfind="ignore-git-find . -type f -follow| peco | ruby -e 'print STDIN.read.chomp'"
+alias pls="ignore-git-find . -type f -follow| peco | xargs less -M -N -R"

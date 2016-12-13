@@ -9,10 +9,6 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias e='emacs'
 
-alias -g P="| peco"
-alias pfind="ignore-git-find . -type f -follow| peco | ruby -e 'print STDIN.read.chomp'"
-alias pls="ignore-git-find . -type f -follow| peco | xargs less -M -N -R"
-
 # For Mac OS X only
 alias fp="find . -follow| peco | tr -d '\n' | pbcopy"
 
