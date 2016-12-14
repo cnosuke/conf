@@ -150,8 +150,11 @@ function diffApply(){
 }
 
 # 特定コマンドを繰り返す
-alias WATCH="watch -d --interval=1"
-alias WATCHsudo="sudo watch -d --interval=1"
+alias WATCH="watch -d --interval=3"
+alias WATCHsudo="sudo watch -d --interval=3"
+alias WATCH1="watch -d --interval=1"
+alias WATCHsudo1="sudo watch -d --interval=1"
+
 
 # 引数を数式として計算
 # ex: calc '1. + sin(1)'
