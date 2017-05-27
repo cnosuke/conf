@@ -41,7 +41,7 @@ zle -N percol_insert_history
 
 # C-x ; でディレクトリに cd
 # C-x i でディレクトリを挿入
-bindkey '^x;' percol_cd_history
+bindkey '^j' percol_cd_history
 bindkey '^xi' percol_insert_history
 
 # http://k0kubun.hatenablog.com/entry/2014/07/06/033336
@@ -64,4 +64,30 @@ bindkey '^r' peco-select-history
 
 alias -g P="| peco"
 alias pfind="ignore-git-find . -type f -follow| peco | ruby -e 'print STDIN.read.chomp'"
-alias pls="ignore-git-find . -type f -follow| peco | xargs less -M -N -R"
+alias pls='echo "Use ^="'
+
+function peco-less() {
+  local selected=$(ignore-git-find . -follow | peco --query "$LBUFFER")
+  if [ -n "$selected" ]; then
+    if [ -d $selected ]; then
+      BUFFER="cd ${selected}"
+    else
+      BUFFER="less ${selected}"
+    fi
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-less
+bindkey '^\' peco-less
+
+function peco-src () {
+  local selected_dir=$(ghq list | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $GOPATH/src/${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src

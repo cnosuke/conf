@@ -1,5 +1,6 @@
 function ignore-git-find() {
-   find $1 \( -type d -name '.git' -prune \) -or \( $*[2,-1] -print \)
+   # find $1 \( -type d -name '.git' -prune \) -or \( $*[2,-1] -print \)
+    find $1 \( -type d \( -name '.git' -or -name '.idea' -or -name '.gradle' \) -prune \) -or \( $*[2,-1] -print \)
 }
 
 alias t="tmux"
@@ -22,7 +23,7 @@ alias gpo='git push origin'
 alias gfo='git fetch origin'
 alias gc='git ci'
 # alias gg='git gr'
-alias gg='echo "Use ag instead."'
+alias gg='pt'
 alias gh='git log -1 --format=format:%h | pbcopy'
 alias gpc='git branch | percol | xargs git checkout'
 
@@ -39,6 +40,13 @@ alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify
 
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
 
-alias ag='ag --pager="less -M -R" -A 3 -B 3'
+alias ag=pt
+
 
 alias pe='emacs $(pfind)'
+
+function net-check(){
+  nc -v -w 1 $1 -z $2
+}
+
+alias -g POD='`kubectl get pod --all-namespaces | peco | ruby -e "STDIN.read.split(/\s+/).tap{|e| print \"#{e[1]} --namespace #{e[0]}\" }"`'

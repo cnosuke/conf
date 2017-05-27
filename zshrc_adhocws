@@ -1,0 +1,6 @@
+function create_adhoc_ws() {
+  local tstamp=`date "+%Y%m%d-%H%M"`
+  local target_dir="$HOME/tmp/autows/${tstamp}_$1"
+  mkdir -p ${target_dir} && cd ${target_dir} && echo ${target_dir}
+}
+alias ws=create_adhoc_ws

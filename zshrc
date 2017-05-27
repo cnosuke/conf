@@ -250,7 +250,19 @@ if [ -e ~/.conf/zshrc_aws ]; then
     source ~/.conf/zshrc_aws
 fi
 
+if [ -e ~/.conf/zshrc_go ]; then
+    source ~/.conf/zshrc_go
+fi
+
+if [ -e ~/.conf/zshrc_adhocws ]; then
+    source ~/.conf/zshrc_adhocws
+fi
+
 #### 個人用設定ファイルがあればそれを読み込む
 if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/cnosuke/.sdkman"
+[[ -s "/Users/cnosuke/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnosuke/.sdkman/bin/sdkman-init.sh"

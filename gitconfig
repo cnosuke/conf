@@ -1,6 +1,6 @@
 [user]
-    name = "Shinnosuke Takeda"
-    email = shinnosuke@gmail.com
+	name = Shinnosuke Takeda
+	email = shinnosuke@gmail.com
 [core]
     excludesfile = ~/.gitignore
     editor = emacs
@@ -28,3 +28,6 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 	required = true
+
+[ghq]
+  root = ~/dev/src
