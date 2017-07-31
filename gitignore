@@ -1,4 +1,5 @@
 *.log
+*.ignore
 
 ##### Emacs #####
 *~
@@ -108,3 +109,7 @@ my_own_script
 routes
 
 .tags
+
+**/*.local
+**/*.local.rb
+**/*_local

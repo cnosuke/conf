@@ -258,7 +258,6 @@ if [ -e ~/.conf/zshrc_adhocws ]; then
     source ~/.conf/zshrc_adhocws
 fi
 
-#### 個人用設定ファイルがあればそれを読み込む
 if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
@@ -267,6 +266,10 @@ export PATH=$PATH:/usr/local/Cellar/git/2.3.5/share/git-core/contrib/diff-highli
 
 if [ -e ~/.conf/zshrc_known_hosts ]; then
     source ~/.conf/zshrc_known_hosts
+fi
+
+if [ -e ~/.conf/zshrc_local ]; then
+    source ~/.conf/zshrc_local
 fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
