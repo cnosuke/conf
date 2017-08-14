@@ -3,8 +3,14 @@
 current_branch = `git symbolic-ref --short HEAD`.strip
 origin_url = `git config remote.origin.url`
 origin = origin_url.match(/((\w|\_|\-)+)(.git)?$/)[1]
-origin_host = origin_url.match(/@(.+)\:/)[1]
-origin_org = origin_url.match(/\:((\w|\-|\_)+)\//)[1]
+if origin_url =~ /https/
+  tmp = origin_url.split('/')
+  origin_host = tmp[2]
+  origin_org = tmp[3]
+else
+  origin_host = origin_url.match(/@(.+)\:/)[1]
+  origin_org = origin_url.match(/\:((\w|\-|\_)+)\//)[1]
+end
 
 if system "git push origin #{current_branch}"
   url = "https://#{origin_host}/#{origin_org}/#{origin}/compare/#{current_branch}?expand=1"

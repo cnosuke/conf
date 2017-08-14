@@ -36,3 +36,6 @@
 
 [credential]
 	helper = osxkeychain
+
+[diff]
+    indentHeuristic = true
