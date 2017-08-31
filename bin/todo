@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require 'cgi'
+
+args = ARGV.join(' ') # 平滑化
+args = args.split(' ')
+
+
+# Action! @Context ::Project <<Start >>Due $Estimate //Note
+
+opt = {}
+args.each do |a|
+  case a
+  when /^\@/
+    opt[:context] = a.gsub('@','')
+  when /^\:\:/
+    opt[:project] = a.gsub('::','')
+  when /^\<\</
+    opt[:defer] = a.gsub('<<','')
+  when /^\>\>/
+    opt[:due] = a.gsub('>>','')
+  when /^\$/
+    opt[:estimate] = a.gsub('$','')
+  when /^\/\//
+    opt[:note] = a.gsub('//','')
+  else
+    opt[:name] ||= []
+    opt[:name] << a
+  end
+end
+
+opt[:name] = opt[:name].join(' ')
+
+params = opt.map { |k,v| "#{k}=#{CGI.escape(v)}" }.join('&')
+
+system("open 'omnifocus:///add?#{params}'")
