@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'cgi'
+require 'erb'
 
 args = ARGV.join(' ') # 平滑化
 args = args.split(' ')
@@ -13,8 +13,8 @@ args.each do |a|
   case a
   when /^\@/
     opt[:context] = a.gsub('@','')
-  when /^\:\:/
-    opt[:project] = a.gsub('::','')
+  when /^\#/
+    opt[:project] = a.gsub('#','')
   when /^\<\</
     opt[:defer] = a.gsub('<<','')
   when /^\>\>/
@@ -31,6 +31,7 @@ end
 
 opt[:name] = opt[:name].join(' ')
 
-params = opt.map { |k,v| "#{k}=#{CGI.escape(v)}" }.join('&')
+params = opt.map { |k,v| "#{k}=#{ERB::Util.url_encode(v)}" }.join('&')
+
 
 system("open 'omnifocus:///add?#{params}'")
