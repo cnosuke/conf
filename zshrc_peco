@@ -91,3 +91,33 @@ function peco-src () {
 }
 zle -N peco-src
 bindkey '^]' peco-src
+
+function cwlogs () {
+  local log_group=$(aws logs describe-log-groups | jq -r '.logGroups[] | .logGroupName' | peco)
+  if [ -n "$log_group" ]; then
+    local log_streams=$(aws logs describe-log-streams --log-group-name $log_group | jq -r '.logStreams[] | .logStreamName' | peco)
+    if [ -n "$log_streams" ]; then
+      local cmd="aws \
+        logs get-log-events \
+          --no-start-from-head \
+          --log-group-name $log_group \
+          --log-stream-name $log_streams \
+        | jq -r '.events[] | .message ' \
+        | jq -r '.log' \
+        | sed -e '/^$/d' \
+        |\less -M -R "
+
+        sh -c "$cmd" && echo $cmd
+    fi
+  fi
+}
+
+function  open-cwlogs () {
+  local log_group=$(aws logs describe-log-groups | jq -r '.logGroups[] | .logGroupName' | peco --query "$1" --select-1)
+
+  if [ -n "$log_group" ]; then
+    open "https://ap-northeast-1.console.aws.amazon.com/cloudwatch/home?region=ap-northeast-1#logEventViewer:group=$log_group"
+  else
+    open "https://ap-northeast-1.console.aws.amazon.com/cloudwatch/home?region=ap-northeast-1#logs:"
+  fi
+}

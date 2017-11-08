@@ -50,3 +50,11 @@ function net-check(){
 }
 
 alias -g POD='`kubectl get pod --all-namespaces | peco | ruby -e "STDIN.read.split(/\s+/).tap{|e| print \"#{e[1]} --namespace #{e[0]}\" }"`'
+
+function today(){
+  date "+%Y%m%d"
+}
+
+function now(){
+  date "+%Y%m%d%H%M%S"
+}
