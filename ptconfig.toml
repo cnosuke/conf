@@ -1,3 +1,4 @@
 color = true
 context = 3
 smart-case = true
+ignore = ["node_modules"]

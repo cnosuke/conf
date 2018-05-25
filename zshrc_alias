@@ -1,6 +1,6 @@
 function ignore-git-find() {
    # find $1 \( -type d -name '.git' -prune \) -or \( $*[2,-1] -print \)
-    find $1 \( -type d \( -name '.git' -or -name '.idea' -or -name '.gradle' \) -prune \) -or \( $*[2,-1] -print \)
+    find $1 \( -type d \( -name '.git' -or -name '.idea' -or -name '.gradle' -or -name 'node_modules' -or -name 'tmp' -or -name 'vendor' \) -prune \) -or \( $*[2,-1] -print \)
 }
 
 alias t="tmux"
