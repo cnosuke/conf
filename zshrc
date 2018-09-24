@@ -263,6 +263,7 @@ if [ -e ~/.conf/zshrc_private ]; then
 fi
 
 export PATH=$PATH:/usr/local/Cellar/git/2.3.5/share/git-core/contrib/diff-highlight/
+export PATH=$PATH:/Users/cnosuke/Library/Python/3.6/bin
 
 if [ -e ~/.conf/zshrc_known_hosts ]; then
     source ~/.conf/zshrc_known_hosts
@@ -275,3 +276,8 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/cnosuke/.sdkman"
 [[ -s "/Users/cnosuke/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnosuke/.sdkman/bin/sdkman-init.sh"
+
+export GPG_TTY=$(tty)
+export LANG=en_US.UTF-8
+
+# export GO111MODULE=on

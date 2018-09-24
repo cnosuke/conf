@@ -5,18 +5,19 @@
     br = branch
     ba = branch -a
     bn = branch --no-merged
-    ci = commit -am
-    cm = commit -m
+    ci = commit -S -am
+    cm = commit -S -m
+    tg = tag -s
     co = checkout
     di = diff
     dw = diff --word-diff=color
     db = diff -b
-    lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn \n %Creset%s'
+    lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn [%G?] \n %Creset%s'
     up = pull --rebase
-    sh = show
+    sh = show --show-signature
     st = status
     wc = whatchanged --graph
-    lv = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn %Cred%h\n  %Creset%s' --name-status
+    lv = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn [%G?] %Cred%h\n  %Creset%s' --name-status 
     gr = grep -C 3 -i -n --color=auto
     wb = browse-remote
     pull-dry-run  = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD) ;git diff --stat --summary ${B}..origin/${B}"
@@ -27,3 +28,4 @@
     push-origin-f = !"B=$(git rev-parse --abbrev-ref HEAD);git push origin -f ${B}"
     po = !"git push-origin"
     pof = !"git push-origin-f"
+    re = "rebase --gpg-sign"

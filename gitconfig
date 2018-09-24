@@ -1,6 +1,7 @@
 [user]
 	name = Shinnosuke Takeda
 	email = shinnosuke@gmail.com
+	signingkey = 003A0B560F6890ED
 
 [core]
     excludesfile = ~/.gitignore
