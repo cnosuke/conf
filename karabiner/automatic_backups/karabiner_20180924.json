@@ -190,7 +190,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "n",
+                                    "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_option"
@@ -202,7 +202,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Bear.app'"
+                                        "shell_command": "open '/Applications/Jasper.app'"
                                     }
                                 ],
                                 "type": "basic"
