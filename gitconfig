@@ -1,7 +1,7 @@
 [user]
 	name = Shinnosuke Takeda
 	email = shinnosuke@gmail.com
-	signingkey = 003A0B560F6890ED
+	signingkey = 9639A335E81D4031
 
 [core]
     excludesfile = ~/.gitignore
@@ -40,3 +40,7 @@
 
 [diff]
     indentHeuristic = true
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true

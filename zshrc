@@ -273,6 +273,10 @@ if [ -e ~/.conf/zshrc_local ]; then
     source ~/.conf/zshrc_local
 fi
 
+if [ -e ~/.conf/zshrc_kubectl ]; then
+    source ~/.conf/zshrc_kubectl
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/cnosuke/.sdkman"
 [[ -s "/Users/cnosuke/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnosuke/.sdkman/bin/sdkman-init.sh"
@@ -281,3 +285,5 @@ export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
 
 # export GO111MODULE=on
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

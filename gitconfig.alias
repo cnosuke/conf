@@ -17,7 +17,7 @@
     sh = show --show-signature
     st = status
     wc = whatchanged --graph
-    lv = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn [%G?] %Cred%h\n  %Creset%s' --name-status 
+    lv = log --graph --date=iso --pretty=format:'%Cgreen%cd %Cblue%cn [%G?] %Cred%h\n  %Creset%s' --name-status
     gr = grep -C 3 -i -n --color=auto
     wb = browse-remote
     pull-dry-run  = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD) ;git diff --stat --summary ${B}..origin/${B}"
@@ -29,3 +29,4 @@
     po = !"git push-origin"
     pof = !"git push-origin-f"
     re = "rebase --gpg-sign"
+    tag-sorted = !"git tag | ruby -e 'puts STDIN.read.split(\"\n\").map{|e| Gem::Version.new(e.gsub(\"v\",\"\")) }.sort.map{|e| \"v#{e}\" }'"

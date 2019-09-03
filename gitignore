@@ -1,3 +1,4 @@
+.env
 *.log
 *.ignore
 
@@ -5,6 +6,7 @@
 *.iml
 *.iws
 *.ipr
+.idea/
 
 ##### Emacs #####
 *~
