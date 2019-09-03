@@ -277,6 +277,10 @@ if [ -e ~/.conf/zshrc_kubectl ]; then
     source ~/.conf/zshrc_kubectl
 fi
 
+if [ -e ~/.conf/zshrc_n ]; then
+    source ~/.conf/zshrc_n
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/cnosuke/.sdkman"
 [[ -s "/Users/cnosuke/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnosuke/.sdkman/bin/sdkman-init.sh"

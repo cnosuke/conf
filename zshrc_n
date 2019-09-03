@@ -1,0 +1,4 @@
+if which n > /dev/null; then
+  export N_PREFIX=$HOME/.n
+  export  PATH=$HOME/.n/bin:$PATH
+fi
