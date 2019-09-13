@@ -1,2 +1,5 @@
 export GOPATH=$HOME/dev
 export PATH=$PATH:$GOPATH/bin
+
+export GO111MODULE=on
+export GOPRIVATE=github.com/blue-agency,github.com/cnosuke
