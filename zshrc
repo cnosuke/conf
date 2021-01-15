@@ -2,6 +2,11 @@ if [ -e ~/.conf/zshrc_time_measure ]; then
    source ~/.conf/zshrc_time_measure
 fi
 
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=$PATH:/usr/local/Cellar/git/2.3.5/share/git-core/contrib/diff-highlight/
+export PATH=$PATH:/Users/cnosuke/Library/Python/3.6/bin
+export PATH=$PATH:/Users/cnosuke/.conf/bin/ignore
+
 # zsh config file dir
 export ZDOTDIR=${HOME}
 
@@ -150,10 +155,10 @@ function diffApply(){
 }
 
 # 特定コマンドを繰り返す
-alias WATCH="watch -d --interval=3"
-alias WATCHsudo="sudo watch -d --interval=3"
-alias WATCH1="watch -d --interval=1"
-alias WATCHsudo1="sudo watch -d --interval=1"
+alias WATCH="/usr/local/Cellar/watch/3.3.16/bin/watch -d --interval=3"
+alias WATCHsudo="sudo /usr/local/Cellar/watch/3.3.16/bin/watch -d --interval=3"
+alias WATCH1="/usr/local/Cellar/watch/3.3.16/bin/watch -d --interval=1"
+alias WATCHsudo1="sudo /usr/local/Cellar/watch/3.3.16/bin/watch -d --interval=1"
 
 
 # 引数を数式として計算
@@ -262,9 +267,6 @@ if [ -e ~/.conf/zshrc_private ]; then
     source ~/.conf/zshrc_private
 fi
 
-export PATH=$PATH:/usr/local/Cellar/git/2.3.5/share/git-core/contrib/diff-highlight/
-export PATH=$PATH:/Users/cnosuke/Library/Python/3.6/bin
-
 if [ -e ~/.conf/zshrc_known_hosts ]; then
     source ~/.conf/zshrc_known_hosts
 fi
@@ -281,6 +283,18 @@ if [ -e ~/.conf/zshrc_n ]; then
     source ~/.conf/zshrc_n
 fi
 
+if [ -e ~/.conf/zshrc_lsd ]; then
+    source ~/.conf/zshrc_lsd
+fi
+
+if [ -e ~/.conf/zshrc_direnv ]; then
+    source ~/.conf/zshrc_direnv
+fi
+
+if [ -e ~/.conf/zshrc_curl ]; then
+    source ~/.conf/zshrc_curl
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/cnosuke/.sdkman"
 [[ -s "/Users/cnosuke/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnosuke/.sdkman/bin/sdkman-init.sh"
@@ -290,4 +304,7 @@ export LANG=en_US.UTF-8
 
 # export GO111MODULE=on
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"

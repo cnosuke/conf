@@ -9,7 +9,21 @@ def r(name)
 end
 
 def rr
-  require "active_support/all"
+  %w[
+    active_support/all
+    parallel
+    csv
+  ].each do |e|
+    printf("loading `#{e}`... ", e)
+    begin
+      r = require(e)
+    rescue LoadError
+      r = false
+    end
+    print (r ? "ok\n" : "load error\n")
+  end
+
+  return true
 end
 
 begin
@@ -29,11 +43,15 @@ end
 Pry.config.prompt = [
   proc {|target_self, nest_level, pry|
     nested = (nest_level.zero?) ? '' : ":#{nest_level}"
-    "[#{pry.input_array.size}] #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}(#{Pry.view_clip(target_self)})#{nested}> "
+    "[#{pry.input_ring.size}] #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}(#{Pry.view_clip(target_self)})#{nested}> "
   },
   proc {|target_self, nest_level, pry|
     nested = (nest_level.zero?) ?  '' : ":#{nest_level}"
-    "[#{pry.input_array.size}] #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}(#{Pry.view_clip(target_self)})#{nested}* "
+    if defined?(pry.input_array) then
+      "[#{pry.input_array.size}] #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}(#{Pry.view_clip(target_self)})#{nested}* "
+    else
+      ""
+    end
   }
 ]
 

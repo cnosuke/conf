@@ -1,10 +1,28 @@
 #!/usr/bin/ruby
 
 origin_url = `git config remote.origin.url`.chomp
-repo = origin_url.split('@').last.gsub(':','/').gsub('.git','')
 commit_hash = `git log -1 --format=format:%h`
-file = ARGV.first.gsub('./','')
-url = "https://#{repo}/blob/#{commit_hash}/#{file}"
+
+file = ARGV[0].gsub('./','')
+
+line = ARGV[1]
+if line != nil && line =~ /L?\d+/
+  line = line.gsub('L', '')
+else
+  line = nil
+end
+
+if origin_url =~ /^https:/
+  repo = origin_url.gsub('.git','')
+  url = "#{repo}/blob/#{commit_hash}/#{file}"
+else
+  repo = origin_url.split('@').last.gsub(':','/').gsub('.git','')
+  url = "https://#{repo}/blob/#{commit_hash}/#{file}"
+end
+
+if line
+  url += "#L#{line}"
+end
 
 puts url
 system("(echo '#{url}' | pbcopy ) && open '#{url}'")

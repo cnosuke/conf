@@ -24,8 +24,10 @@ alias gfo='git fetch origin'
 alias gc='git ci'
 # alias gg='git gr'
 alias gg='pt'
-alias gh='git log -1 --format=format:%h | pbcopy'
-alias gpc='git branch | percol | xargs git checkout'
+alias gci='git log -1 --format=format:%h | pbcopy'
+alias gpc='git branch | peco | xargs git checkout'
+alias git-latest-hash='git log -n 1 | ruby -e "print STDIN.read.split(/\s/)[1]" | pbcopy && git log -n 1'
+alias gl=git-latest-hash
 
 alias be='bundle exec'
 alias ber='bundle exec rails'
@@ -39,9 +41,6 @@ alias -g SAY="&& (say -v Alex 'Success' && terminal-notifier -message 'Success' 
 alias -g IM="&& (say 'Success' && terminal-notifier -message 'Success' && notify_kayac 'Success') || (say 'Failed' && terminal-notifier -message 'Failed' && notify_kayac 'Failed' )"
 
 alias o='F=$(find . -follow| percol); open ${F}; echo ${F}'
-
-alias ag=pt
-
 
 alias pe='emacs $(pfind)'
 
@@ -57,4 +56,12 @@ function today(){
 
 function now(){
   date "+%Y%m%d%H%M%S"
+}
+
+function tarzstd() {
+   tar -c $1 | pzstd -10 > $1.tar.zst
+}
+
+function untarzstd() {
+   pzstd -dc $1 |tar -x
 }

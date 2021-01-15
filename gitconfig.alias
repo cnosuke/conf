@@ -30,3 +30,4 @@
     pof = !"git push-origin-f"
     re = "rebase --gpg-sign"
     tag-sorted = !"git tag | ruby -e 'puts STDIN.read.split(\"\n\").map{|e| Gem::Version.new(e.gsub(\"v\",\"\")) }.sort.map{|e| \"v#{e}\" }'"
+    nvt = "version-next --minor"

@@ -1,1 +1,8 @@
-source $(PYENV_VERSION=2.7.15 pyenv which aws_zsh_completer.sh)
+complete -C aws_completer aws
+
+function ecr-login(){
+  aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin https://$AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com
+  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin https://$AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
+}
+
+export AWS_PROFILE=shinnosuke-takeda

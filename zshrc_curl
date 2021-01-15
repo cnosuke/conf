@@ -1,0 +1,3 @@
+if [ -e /usr/local/Cellar/curl/ ]; then
+  alias curl=/usr/local/Cellar/curl/7.67.0/bin/curl
+fi

@@ -120,3 +120,5 @@ routes
 **/*.local
 **/*.local.rb
 **/*_local
+
+.envrc
